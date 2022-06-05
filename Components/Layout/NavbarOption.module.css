@@ -1,0 +1,23 @@
+.navbarOption {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 30px;
+    padding-left: 10px;
+  }
+  
+  .navbarOption:hover {
+    background-color: #e8f5fe;
+    color: var(--twitter-color);
+    transition: color 100ms ease-out;
+  }
+
+  .navbarOption h2 {
+    font-weight: 700;
+    font-size: 20px;
+    margin-left: 10px;
+  }
+
+  .navbarOptionActive {
+    color: var(--twitter-color);
+  }
