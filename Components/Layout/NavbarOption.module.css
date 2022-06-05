@@ -4,6 +4,18 @@
     cursor: pointer;
     border-radius: 30px;
     padding-left: 10px;
+    height: 45px;
+  }
+
+  .navbarOptionSmall{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 30px;
+    height: 45px;
+    width: 45px;
   }
   
   .navbarOption:hover {
@@ -11,6 +23,13 @@
     color: var(--twitter-color);
     transition: color 100ms ease-out;
   }
+
+  .navbarOptionSmall:hover{
+    background-color: #e8f5fe;
+    color: var(--twitter-color);
+    transition: color 100ms ease-out;
+  }
+
 
   .navbarOption h2 {
     font-weight: 700;

@@ -1,14 +1,15 @@
 import classes from "./NavbarOption.module.css";
 
-function NavbarOption({ text, Icon, active }) {
+function NavbarOption({ text, Icon, active, showText }) {
   return (
     <div
-      className={`${classes.navbarOption}  ${
+      className={`${showText ? classes.navbarOption : classes.navbarOptionSmall}  ${
         active && classes.navbarOptionActive
       }`}
     >
       <Icon />
-      <h2>{text}</h2>
+      {showText && <h2>{text}</h2>}
+      
     </div>
   );
 }
