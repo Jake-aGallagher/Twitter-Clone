@@ -33,6 +33,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .tweetSmall{
@@ -49,6 +50,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .twitterIcon {
@@ -79,4 +81,15 @@
 
 .accountCircleIcon{
   font-size: 45px !important;
+  cursor: pointer;
+}
+
+.logoutBox{
+  position: absolute;
+  bottom: 70px;
+  border: 2px solid var(--twitter-color);
+  padding: 3px;
+  background-color: var(--twitter-background);
+  color: var(--twitter-color);
+  cursor: pointer;
 }

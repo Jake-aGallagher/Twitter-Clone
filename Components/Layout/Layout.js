@@ -6,7 +6,7 @@ const Layout = (props) => {
 
   return (
     <div className={classes.layout}>
-      <Navbar windowSize={props.windowSize} />
+      <Navbar windowSize={props.windowSize} logoutHandler={props.logoutHandler} />
       <main>{props.children}</main>
     </div>
   );

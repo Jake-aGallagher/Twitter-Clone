@@ -15,9 +15,12 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const Navbar = (props) => {
   const router = useRouter();
+  const [showLogoutBox, setShowLogoutBox] = useState(false)
+
   const showText = props.windowSize >= 1280;
 
   return (
@@ -103,10 +106,11 @@ const Navbar = (props) => {
         {showText ? <p>Tweet</p> : <p>&#43;</p>}
       </button>
 
-      <button className={classes.account}>
+      <button className={classes.account} onClick={()=> setShowLogoutBox(!showLogoutBox)}>
         <AccountCircleIcon className={classes.accountCircleIcon} />
         {showText ? <p className={classes.accountText}>Username</p> : ""}
       </button>
+      {showLogoutBox && <div className={classes.logoutBox} onClick={props.logoutHandler}>Logout</div>}
     </div>
   );
 };
