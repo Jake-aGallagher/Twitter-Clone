@@ -18,7 +18,8 @@ const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     setWindowSize(window.innerWidth);
     window.addEventListener("resize", () => setWindowSize(window.innerWidth));
-  }, []);
+    console.log(windowSize)
+  }, );
 
   return (
     <>
