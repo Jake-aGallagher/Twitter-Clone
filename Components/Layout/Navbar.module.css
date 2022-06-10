@@ -76,12 +76,13 @@
   flex-direction: row;
   align-items: center;
   font-size: 20px;
+  cursor: pointer;
 
 }
 
 .accountCircleIcon{
   font-size: 45px !important;
-  cursor: pointer;
+  
 }
 
 .logoutBox{
