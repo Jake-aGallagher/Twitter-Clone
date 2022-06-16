@@ -1,6 +1,8 @@
 import { useState } from "react";
 import classes from "./Login.module.css";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addProfileImg, addUser, setFollowing, setBookmarks } from "../Store/Actions/UserActions";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
@@ -10,6 +12,7 @@ const Login = (props) => {
   const [createdPassword, setCreatedPassword] = useState("");
   const [retypedPassword, setRetypedPassword] = useState("");
   const axios = require("axios");
+  const dispatch = useDispatch()
 
   /* Setting the page to either the Login or Create Account page */
   const signUpPageHandler = () => {
@@ -39,6 +42,10 @@ const Login = (props) => {
           ".json"
       );
       if (response.data.password === password) {
+        dispatch(addUser(username))
+        dispatch(addProfileImg(response.data.profileImg))
+        dispatch(setFollowing(response.data.following))
+        dispatch(setBookmarks(response.data.bookmarks))
         props.loginHandler();
       } else {
         setPassword("");
@@ -46,6 +53,7 @@ const Login = (props) => {
       }
     } catch (err) {
       alert("Something went wrong, Please try again");
+      console.log(err)
     }
   };
 
@@ -103,12 +111,17 @@ const Login = (props) => {
     }
   };
 
+
+  const rand = Math.floor((Math.random() * 70) + 1);
+
   const createUserAccountPostHandler = async () => {
     const response = await axios.put(
       "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/users/" +
         createdUsername +
         ".json",
-      { password: createdPassword }
+      { password: createdPassword,
+        profileImg: "https://i.pravatar.cc/60?img="+ rand
+      }
     );
     clearCreatedFields();
     alert("Account created");

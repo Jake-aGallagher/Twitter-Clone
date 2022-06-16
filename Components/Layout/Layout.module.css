@@ -1,4 +1,5 @@
 .layout{
+    position: relative;
     display: flex;
     flex-direction: row;
     background-color: rgb(240, 203, 148);

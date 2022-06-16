@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.tweet {
+  padding: 10px;
+  border: 2px solid var(--twitter-color);
+  border-radius: 10px;
+  width: 90%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.img {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin-right: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  color: var(--twitter-color);
+  font-weight: bold;
+}
+
+.username {
+  font-size: 15px;
+}
+
+.message {
+  font-size: 20px;
+}
+
+.bookmark {
+  border: 2px solid var(--twitter-color);
+  background-color: var(--twitter-background);
+  color: var(--twitter-color);
+  width: 125px;
+  font-size: 15px;
+  height: 30px;
+  border-radius: 15px;
+  transition-duration: 0.4s;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.bookmark:hover {
+  background-color: var(--twitter-color);
+  color: var(--twitter-background);
+}
+
+.noTweets {
+  margin-left: 50px;
+  font-size: 15px;
+  color: var(--twitter-color);
+  font-weight: bold;
+}

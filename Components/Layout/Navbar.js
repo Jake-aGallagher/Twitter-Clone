@@ -13,6 +13,7 @@ import ListAltIcon from "@material-ui/icons/ListAlt";
 import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import { useSelector } from "react-redux";
 
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -20,8 +21,10 @@ import { useState } from "react";
 const Navbar = (props) => {
   const router = useRouter();
   const [showLogoutBox, setShowLogoutBox] = useState(false)
+  const username = useSelector(state => state.user.username)
+  const profileImg = useSelector(state => state.user.profileImg)
 
-  const showText = props.windowSize >= 1280;
+  const showText = props.windowSize >= 1300;
 
   return (
     <div className={showText ? classes.navbar : classes.smallNav}>
@@ -107,8 +110,8 @@ const Navbar = (props) => {
       </button>
 
       <button className={classes.account} onClick={()=> setShowLogoutBox(!showLogoutBox)}>
-        <AccountCircleIcon className={classes.accountCircleIcon} />
-        {showText ? <p className={classes.accountText}>Username</p> : ""}
+        <img src={profileImg} className={classes.accountCircleIcon} />
+        {showText ? <p className={classes.accountText}>{username}</p> : ""}
       </button>
       {showLogoutBox && <div className={classes.logoutBox} onClick={props.logoutHandler}>Logout</div>}
     </div>

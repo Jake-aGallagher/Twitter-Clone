@@ -11,7 +11,6 @@ flex-direction: row;
 }
 
 .tweetImg{
-    background-color: red;
     width: 60px;
     height: 60px;
     border-radius: 30px;
@@ -44,7 +43,7 @@ flex-direction: row;
     color: var(--twitter-color);
     width: 100px;
     height: 30px;
-    border-radius: 20px;
+    border-radius: 15px;
     transition-duration: 0.4s;
     font-weight: bold;
     font-size: 20px;
