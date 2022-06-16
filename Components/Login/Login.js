@@ -2,7 +2,7 @@ import { useState } from "react";
 import classes from "./Login.module.css";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { addProfileImg, addUser, setFollowing, setBookmarks } from "../Store/Actions/UserActions";
+import { addProfileImg, addUser, setFollowing, setBookmarks, setAbout } from "../Store/Actions/UserActions";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
@@ -46,6 +46,7 @@ const Login = (props) => {
         dispatch(addProfileImg(response.data.profileImg))
         dispatch(setFollowing(response.data.following))
         dispatch(setBookmarks(response.data.bookmarks))
+        dispatch(setAbout(response.data.about))
         props.loginHandler();
       } else {
         setPassword("");

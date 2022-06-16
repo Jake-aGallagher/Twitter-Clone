@@ -1,0 +1,58 @@
+.container {
+    margin-left: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: calc(100vw - 70px);
+    font-weight: bold;
+  }
+  
+  @media screen and (min-width: 1300px) {
+    .container {
+      margin-left: 290px;
+      width: 1010px;
+    }
+  }
+  
+  .title{
+    margin: 5vh;
+    color: var(--twitter-color);
+    font-size: 30px;
+  }
+
+  .profile {
+    padding: 10px;
+    border: 2px solid var(--twitter-color);
+    border-radius: 10px;
+    width: 90%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .profileImg {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    margin-right: 20px;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    color: var(--twitter-color);
+    font-weight: bold;
+  }
+  
+  .username {
+    font-size: 15px;
+  }
+  
+  .about {
+    font-size: 20px;
+  }
+
+  .updatingSection{
+      width: 90%;
+  }

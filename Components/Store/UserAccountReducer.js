@@ -8,7 +8,8 @@ import {
   removeBookmark,
   addExtraBookmark,
   addExtraFollowing,
-  removeFollowing
+  removeFollowing,
+  setAbout
 } from "./Actions/UserActions";
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   profileImg: "",
   following: [],
   bookmarks: [],
+  about: ""
 };
 
 const userAccountReducer = createReducer(initialState, (builder) => {
@@ -46,6 +48,9 @@ const userAccountReducer = createReducer(initialState, (builder) => {
     })
     .addCase(removeFollowing, (state, action) => {
       state.following = action.payload
+    })
+    .addCase(setAbout, (state, action) => {
+      state.about = action.payload
     })
 });
 
