@@ -88,15 +88,27 @@
   width: 60px;
   height: 60px;
   border-radius: 30px;
-  
+  margin-right: 10px;
 }
 
 .logoutBox{
   position: absolute;
-  bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  bottom: 95px;
   border: 2px solid var(--twitter-color);
+  border-radius: 15px;
   padding: 3px;
   background-color: var(--twitter-background);
   color: var(--twitter-color);
   cursor: pointer;
+  height: 25px;
+}
+
+@media screen and (min-width: 1300px){
+  .logoutBox{
+    width: 110px;
+  }
 }

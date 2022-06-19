@@ -1,15 +1,13 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
-  addUser,
-  addProfileImg,
-  setFollowing,
+  setUserData,
   removeUser,
-  setBookmarks,
   removeBookmark,
   addExtraBookmark,
   addExtraFollowing,
   removeFollowing,
-  setAbout
+  changeAbout,
+  changeImg
 } from "./Actions/UserActions";
 
 const initialState = {
@@ -17,40 +15,42 @@ const initialState = {
   profileImg: "",
   following: [],
   bookmarks: [],
-  about: ""
+  about: "",
 };
 
 const userAccountReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(addUser, (state, action) => {
-      state.username = action.payload;
-    })
-    .addCase(addProfileImg, (state, action) => {
-      state.profileImg = action.payload;
-    })
-    .addCase(setFollowing, (state, action) => {
-      state.following = action.payload;
+    .addCase(setUserData, (state, action) => {
+      state.username = action.payload.username;
+      state.profileImg = action.payload.profileImg.profileImg;
+      state.following = action.payload.following;
+      state.bookmarks = action.payload.bookmarks;
+      state.about = action.payload.about.about;
     })
     .addCase(removeUser, (state) => {
       state.username = "";
-    })
-    .addCase(setBookmarks, (state, action) => {
-      state.bookmarks = action.payload;
+      state.profileImg = "";
+      state.following = [];
+      state.bookmarks = [];
+      state.about = "";
     })
     .addCase(removeBookmark, (state, action) => {
-      state.bookmarks = action.payload
+      state.bookmarks = action.payload;
     })
     .addCase(addExtraBookmark, (state, action) => {
       state.bookmarks = state.bookmarks.concat(action.payload);
     })
-    .addCase(addExtraFollowing, (state, action) => {
-      state.following = state.following.concat(action.payload)
-    })
     .addCase(removeFollowing, (state, action) => {
-      state.following = action.payload
+      state.following = action.payload;
     })
-    .addCase(setAbout, (state, action) => {
+    .addCase(addExtraFollowing, (state, action) => {
+      state.following = state.following.concat(action.payload);
+    })
+    .addCase(changeAbout, (state, action) => {
       state.about = action.payload
+    })
+    .addCase(changeImg, (state, action) => {
+      state.profileImg = action.payload
     })
 });
 

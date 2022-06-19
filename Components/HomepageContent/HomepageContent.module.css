@@ -5,6 +5,12 @@
   align-items: center;
 }
 
+.text{
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--twitter-color);
+}
+
 .tweet {
   padding: 10px;
   border: 2px solid var(--twitter-color);
@@ -53,6 +59,7 @@
 .bookmark:hover {
   background-color: var(--twitter-color);
   color: var(--twitter-background);
+  cursor: pointer;
 }
 
 .noTweets {

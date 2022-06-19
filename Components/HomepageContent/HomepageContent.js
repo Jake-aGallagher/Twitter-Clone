@@ -96,7 +96,15 @@ const HomepageContent = () => {
 
   return (
     <div className={classes.container}>
-      {isLoading ? <div>Loading</div> : tweetsContent}
+      {isLoading ? (
+        <div className={classes.text}>Loading...</div>
+      ) : tweetsContent.length > 0 ? (
+        tweetsContent
+      ) : (
+        <div className={classes.text}>
+          You have no Tweets to view, follow more people to get involved.
+        </div>
+      )}
     </div>
   );
 };

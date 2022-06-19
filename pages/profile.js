@@ -1,5 +1,9 @@
 import classes from "../styles/profile.module.css";
+import ProfileWidget from "../Components/ProfileComponents/ProfileWidget";
+import ChangePassword from "../Components/ProfileComponents/ChangePassword";
 import { useSelector } from "react-redux";
+import ChangeAbout from "../Components/ProfileComponents/ChangeAbout";
+import ChangeImg from "../Components/ProfileComponents/ChangeImg";
 
 const Profile = () => {
   const about = useSelector((state) => state.user.about);
@@ -9,17 +13,10 @@ const Profile = () => {
   return (
     <div className={classes.container}>
       <h1 className={classes.title}>Profile</h1>
-      <div className={classes.profile}>
-        <img src={profileImg} className={classes.profileImg}/>
-        <div className={classes.content}>
-          <div className={classes.username}>{username}</div>
-          <div className={classes.about}>{about}</div>
-        </div>
-      </div>
-
-      <div className={classes.updatingSection}>
-
-      </div>
+      <ProfileWidget />
+      <ChangeAbout />
+      <ChangeImg />
+      <ChangePassword />
     </div>
   );
 };
