@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addExtraFollowing, removeFollowing } from "../Components/Store/Actions/UserActions";
+import {
+  addExtraFollowing,
+  removeFollowing,
+} from "../Components/Store/Actions/UserActions";
 import classes from "../styles/explore.module.css";
 
 const Explore = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [profiles, setProfiles] = useState([]);
   const username = useSelector((state) => state.user.username);
   const following = useSelector((state) => state.user.following);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [profiles, setProfiles] = useState([]);
   const axios = require("axios");
   const dispatch = useDispatch();
 
@@ -34,8 +37,8 @@ const Explore = () => {
               const profileToAdd = {
                 id: matchingKeys[key],
                 username: matchingKeys[key],
-                img: res.data.profileImg,
-                about: res.data.about,
+                img: res.data.profileImg.profileImg,
+                about: res.data.about.about,
               };
               setProfiles((prev) => [...prev, profileToAdd]);
             } catch (err) {
@@ -79,9 +82,9 @@ const Explore = () => {
           "/following.json",
         [newFollowingList]
       );
-      dispatch(removeFollowing(newFollowingList))
+      dispatch(removeFollowing(newFollowingList));
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   };
 

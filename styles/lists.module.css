@@ -1,0 +1,22 @@
+.container {
+    margin-left: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: calc(100vw - 70px);
+  }
+  
+  @media screen and (min-width: 1300px) {
+    .container {
+      margin-left: 290px;
+      width: 1010px;
+    }
+  }
+
+  .title {
+    margin: 5vh;
+    color: var(--twitter-color);
+    font-weight: bold;
+    font-size: 30px;
+  }

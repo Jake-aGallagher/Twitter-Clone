@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import classes from "./ChangeAbout.module.css";
 import { changeAbout } from "../Store/Actions/UserActions";
+import classes from "./ChangeAbout.module.css";
 
 const ChangeAbout = () => {
   const username = useSelector((state) => state.user.username);
   const [about, setAbout] = useState("");
+  const axios = require("axios");
   const dispatch = useDispatch();
-  const axios = require("axios")
 
   const setAboutHandler = (event) => {
     setAbout(event.target.value);
   };
 
   const submitHandler = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     try {
       const response = await axios.put(
         "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/users/" +
@@ -23,10 +23,10 @@ const ChangeAbout = () => {
         { about: about }
       );
       dispatch(changeAbout(about));
-      setAbout("")
+      setAbout("");
     } catch (err) {
       console.log(err);
-    } 
+    }
   };
 
   return (
@@ -41,7 +41,9 @@ const ChangeAbout = () => {
         className={classes.aboutInput}
         value={about}
       ></textarea>
-      <button onClick={submitHandler} className={classes.submitButton}>Submit</button>
+      <button onClick={submitHandler} className={classes.submitButton}>
+        Submit
+      </button>
     </form>
   );
 };

@@ -1,9 +1,9 @@
-import classes from "../styles/profile.module.css";
-import ProfileWidget from "../Components/ProfileComponents/ProfileWidget";
-import ChangePassword from "../Components/ProfileComponents/ChangePassword";
 import { useSelector } from "react-redux";
+import ProfileWidget from "../Components/ProfileComponents/ProfileWidget";
 import ChangeAbout from "../Components/ProfileComponents/ChangeAbout";
 import ChangeImg from "../Components/ProfileComponents/ChangeImg";
+import ChangePassword from "../Components/ProfileComponents/ChangePassword";
+import classes from "../styles/profile.module.css";
 
 const Profile = () => {
   const about = useSelector((state) => state.user.about);

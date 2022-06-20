@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classes from "./ChangePassword.module.css";
@@ -8,7 +7,7 @@ const ChangePassword = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [retypedPassword, setRetypedPassword] = useState("");
-  const dispatch = useDispatch();
+  const axios = require("axios");
 
   const oldHandler = (event) => {
     setOldPassword(event.target.value);
@@ -42,8 +41,8 @@ const ChangePassword = () => {
               username +
               "/password.json",
             { password: newPassword }
-          )
-          alert("Your password has been changed successfully")
+          );
+          alert("Your password has been changed successfully");
         } catch (err) {
           console.log(err);
         }

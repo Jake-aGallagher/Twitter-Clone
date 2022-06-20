@@ -1,9 +1,9 @@
+import { useEffect, useState } from "react";
+import { Provider } from "react-redux";
 import store from "../Components/Store/Store";
 import Layout from "../Components/Layout/Layout";
 import Login from "../Components/Login/Login";
 import "../styles/globals.css";
-import { useEffect, useState } from "react";
-import { Provider } from "react-redux";
 
 const MyApp = ({ Component, pageProps }) => {
   const [windowSize, setWindowSize] = useState();
@@ -21,7 +21,7 @@ const MyApp = ({ Component, pageProps }) => {
     setWindowSize(window.innerWidth);
     window.addEventListener("resize", () => setWindowSize(window.innerWidth));
   }, []);
-  
+
   return (
     <Provider store={store}>
       {loggedIn && (

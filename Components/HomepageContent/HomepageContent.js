@@ -1,16 +1,15 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addExtraBookmark } from "../Store/Actions/UserActions";
 import classes from "./HomepageContent.module.css";
 
 const HomepageContent = () => {
-  const axios = require("axios");
-  const [tweets, setTweets] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const username = useSelector((state) => state.user.username);
   const following = useSelector((state) => state.user.following);
   const bookmarks = useSelector((state) => state.user.bookmarks);
+  const [tweets, setTweets] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const axios = require("axios");
   const dispatch = useDispatch();
 
   const fetchTweets = async () => {

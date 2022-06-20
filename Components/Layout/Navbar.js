@@ -1,8 +1,10 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
-import classes from "./Navbar.module.css";
+import Modals from "./Modals";
 import NavbarOption from "./NavbarOption";
-
 import TwitterIcon from "@material-ui/icons/Twitter";
 import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
@@ -11,20 +13,21 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import PermIdentityIcon from "@material-ui/icons/PermIdentity";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import { useSelector } from "react-redux";
 
-import { useRouter } from "next/router";
-import { useState } from "react";
+import classes from "./Navbar.module.css";
 
 const Navbar = (props) => {
+  const username = useSelector((state) => state.user.username);
+  const profileImg = useSelector((state) => state.user.profileImg);
+  const [tweetModal, setTweetModal] = useState(false);
+  const [showLogoutBox, setShowLogoutBox] = useState(false);
   const router = useRouter();
-  const [showLogoutBox, setShowLogoutBox] = useState(false)
-  const username = useSelector(state => state.user.username)
-  const profileImg = useSelector(state => state.user.profileImg)
 
   const showText = props.windowSize >= 1300;
+
+  const closeModal = () => {
+    setTweetModal(false);
+  };
 
   return (
     <div className={showText ? classes.navbar : classes.smallNav}>
@@ -103,17 +106,27 @@ const Navbar = (props) => {
         </a>
       </Link>
 
-      <NavbarOption Icon={MoreHorizIcon} text="More" showText={showText} />
-
-      <button  className={showText ? classes.tweet : classes.tweetSmall} >
+      <button
+        onClick={() => setTweetModal(!tweetModal)}
+        className={showText ? classes.tweet : classes.tweetSmall}
+      >
         {showText ? <p>Tweet</p> : <p>&#43;</p>}
       </button>
 
-      <button className={classes.account} onClick={()=> setShowLogoutBox(!showLogoutBox)}>
+      {tweetModal && <Modals content="tweet" closeModal={closeModal} />}
+
+      <button
+        className={classes.account}
+        onClick={() => setShowLogoutBox(!showLogoutBox)}
+      >
         <img src={profileImg} className={classes.accountCircleIcon} />
         {showText ? <p className={classes.accountText}>{username}</p> : ""}
       </button>
-      {showLogoutBox && <div className={classes.logoutBox} onClick={props.logoutHandler}>Logout</div>}
+      {showLogoutBox && (
+        <div className={classes.logoutBox} onClick={props.logoutHandler}>
+          Logout
+        </div>
+      )}
     </div>
   );
 };

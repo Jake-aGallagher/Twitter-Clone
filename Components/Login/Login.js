@@ -1,7 +1,7 @@
 import { useState } from "react";
-import classes from "./Login.module.css";
 import { useDispatch } from "react-redux";
 import { setUserData } from "../Store/Actions/UserActions";
+import classes from "./Login.module.css";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
@@ -138,16 +138,14 @@ const Login = (props) => {
       </div>
       {!signup && (
         <form className={classes.loginForm}>
-          <input
-            type="text"
-            placeholder="Username"
-            onChange={usernameHandler}
-          ></input>
+          <label htmlFor="username">Username: </label>
+          <input type="text" onChange={usernameHandler} id="username"></input>
+          <label htmlFor="password">Password: </label>
           <input
             type="password"
-            placeholder="Password"
             onChange={passwordHandler}
             value={password}
+            id="password"
           ></input>
           <button onClick={signInHandler}>Sign in</button>
         </form>
@@ -155,22 +153,26 @@ const Login = (props) => {
 
       {signup && (
         <form className={classes.createAccountForm}>
+          <label htmlFor="createUsername">Create Username: </label>
           <input
             type="text"
-            placeholder="Create Username"
             onChange={createdUsernameHandler}
+            id="createUsername"
           ></input>
+          <label htmlFor="createPassword">Create Password: </label>
           <input
             type="password"
-            placeholder="Create Password"
+            placeholder="Min 8 Characters"
             onChange={createdPasswordHandler}
             value={createdPassword}
+            id="createPassword"
           ></input>
+          <label htmlFor="retypePassword">Retype Password: </label>
           <input
             type="password"
-            placeholder="Retype Password"
             onChange={retypedPasswordHandler}
             value={retypedPassword}
+            id="retypePassword"
           ></input>
           <button onClick={registerHandler}>register</button>
         </form>

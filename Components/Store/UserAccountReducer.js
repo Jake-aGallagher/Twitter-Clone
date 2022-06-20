@@ -7,7 +7,7 @@ import {
   addExtraFollowing,
   removeFollowing,
   changeAbout,
-  changeImg
+  changeImg,
 } from "./Actions/UserActions";
 
 const initialState = {
@@ -47,11 +47,11 @@ const userAccountReducer = createReducer(initialState, (builder) => {
       state.following = state.following.concat(action.payload);
     })
     .addCase(changeAbout, (state, action) => {
-      state.about = action.payload
+      state.about = action.payload;
     })
     .addCase(changeImg, (state, action) => {
-      state.profileImg = action.payload
-    })
+      state.profileImg = action.payload;
+    });
 });
 
 export default userAccountReducer;

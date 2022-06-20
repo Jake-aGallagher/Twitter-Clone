@@ -1,15 +1,14 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeBookmark } from "../Components/Store/Actions/UserActions";
 import classes from "../styles/bookmarks.module.css";
 
 const Bookmarks = () => {
-  const axios = require("axios");
-  const [bookmarkedTweets, setBookmarkedTweets] = useState([]);
-  const [loading, setLoading] = useState(true);
   const bookmarks = useSelector((state) => state.user.bookmarks);
   const username = useSelector((state) => state.user.username);
+  const [bookmarkedTweets, setBookmarkedTweets] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const axios = require("axios");
   const dispatch = useDispatch();
 
   const fetchBookmarks = async () => {
@@ -82,9 +81,7 @@ const Bookmarks = () => {
     setLoading(true);
     setBookmarkedTweets([]);
     fetchBookmarks();
-    
   }, [bookmarks]);
-
 
   return (
     <div className={classes.container}>

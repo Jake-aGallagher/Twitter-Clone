@@ -4,146 +4,151 @@
   align-items: center;
   border: 2px solid var(--twitter-color);
   border-radius: 30px;
-margin-top: 12.5vh;
+  margin-top: 12.5vh;
   height: 75vh;
   width: 60vw;
 }
 
-.topButtons{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 100%;
-    margin-top: 100px;
-    margin-bottom: 50px;
+.topButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 30px 0 30px 0;
 }
 
-.topButtons button{
-    background-color: var(--twitter-background);
-    color: var(--twitter-color);
-    font-weight: bold;
-    font-size: 20px;
-    width: 20vw;
-    height: 10vh;
-    border-radius: 30px;
-    border: 2px solid var(--twitter-color);
-    box-shadow: 0 9px #999;
+.topButtons button {
+  background-color: var(--twitter-background);
+  color: var(--twitter-color);
+  font-weight: bold;
+  font-size: 20px;
+  width: 20vw;
+  height: 10vh;
+  border-radius: 30px;
+  border: 2px solid var(--twitter-color);
+  box-shadow: 0 9px #999;
 }
 
-.topButtons button:hover{
-    background-color: var(--twitter-color);
-    color: var(--twitter-background);
-    transition-duration: 0.4s;
-    cursor: pointer;
+.topButtons button:hover {
+  background-color: var(--twitter-color);
+  color: var(--twitter-background);
+  transition-duration: 0.4s;
+  cursor: pointer;
 }
 
-.topButtons button:active{
-    box-shadow: 0 0px #666;
+.topButtons button:active {
+  box-shadow: 0 0px #666;
   transform: translateY(5px);
 }
 
-.loginForm{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--twitter-color);
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.loginForm input{
-    border: 1px solid var(--twitter-color);
-    background-color: var(--twitter-background);
-    color: var(--twitter-color);
-    font-size: 20px;
-    font-weight: bold;
-    margin: 10px;
-    width: 40vw;
-    height: 5vh;
-    padding-left: 20px;
-    border-radius: 30px;
+.loginForm input {
+  border: 1px solid var(--twitter-color);
+  background-color: var(--twitter-background);
+  color: var(--twitter-color);
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px;
+  width: 40vw;
+  height: 5vh;
+  padding-left: 20px;
+  border-radius: 30px;
 }
 
-.loginForm button{
-    background-color: var(--twitter-background);
-    color: var(--twitter-color);
-    font-weight: bold;
-    font-size: 20px;
-    width: 20vw;
-    height: 6vh;
-    border-radius: 30px;
-    border: 2px solid var(--twitter-color);
-    box-shadow: 0 9px #999;
-    margin-top: 5vh;
+.loginForm button {
+  background-color: var(--twitter-background);
+  color: var(--twitter-color);
+  font-weight: bold;
+  font-size: 20px;
+  width: 20vw;
+  height: 6vh;
+  border-radius: 30px;
+  border: 2px solid var(--twitter-color);
+  box-shadow: 0 9px #999;
+  margin-top: 5vh;
 }
 
-.loginForm button:hover{
-    background-color: var(--twitter-color);
-    color: var(--twitter-background);
-    transition-duration: 0.4s;
-    cursor: pointer;
+.loginForm button:hover {
+  background-color: var(--twitter-color);
+  color: var(--twitter-background);
+  transition-duration: 0.4s;
+  cursor: pointer;
 }
 
-.loginForm button:active{
-    box-shadow: 0 0px #666;
+.loginForm button:active {
+  box-shadow: 0 0px #666;
   transform: translateY(5px);
 }
 
-.createAccountForm{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.createAccountForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--twitter-color);
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.createAccountForm input{
-    border: 1px solid var(--twitter-color);
-    background-color: var(--twitter-background);
-    color: var(--twitter-color);
-    font-size: 20px;
-    font-weight: bold;
-    margin: 10px;
-    width: 40vw;
-    height: 5vh;
-    padding-left: 20px;
-    border-radius: 30px;
+.createAccountForm input {
+  border: 1px solid var(--twitter-color);
+  background-color: var(--twitter-background);
+  color: var(--twitter-color);
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px;
+  width: 40vw;
+  height: 5vh;
+  padding-left: 20px;
+  border-radius: 30px;
 }
 
-.createAccountForm button{
-    background-color: var(--twitter-background);
-    color: var(--twitter-color);
-    font-weight: bold;
-    font-size: 20px;
-    width: 20vw;
-    height: 6vh;
-    border-radius: 30px;
-    border: 2px solid var(--twitter-color);
-    box-shadow: 0 9px #999;
-    margin-top: 5vh;
+.createAccountForm button {
+  background-color: var(--twitter-background);
+  color: var(--twitter-color);
+  font-weight: bold;
+  font-size: 20px;
+  width: 20vw;
+  height: 6vh;
+  border-radius: 30px;
+  border: 2px solid var(--twitter-color);
+  box-shadow: 0 9px #999;
+  margin-top: 5vh;
 }
 
-.createAccountForm button:hover{
-    background-color: var(--twitter-color);
-    color: var(--twitter-background);
-    transition-duration: 0.4s;
-    cursor: pointer;
+.createAccountForm button:hover {
+  background-color: var(--twitter-color);
+  color: var(--twitter-background);
+  transition-duration: 0.4s;
+  cursor: pointer;
 }
 
-.createAccountForm button:active{
-    box-shadow: 0 0px #666;
+.createAccountForm button:active {
+  box-shadow: 0 0px #666;
   transform: translateY(5px);
 }
 
-@media screen and (max-width: 500px){
-    .topButtons button{
-        font-size: 16px;
-    }
-    .loginForm input{
-        font-size: 16px;
-    }
-    .loginForm button{
-        font-size: 16px;
-    }
-    .createAccountForm input{
-        font-size: 16px;
-    }
-    .createAccountForm button{
-        font-size: 16px;
-    }
+@media screen and (max-width: 500px) {
+  .topButtons button {
+    font-size: 16px;
+  }
+  .loginForm input {
+    font-size: 16px;
+  }
+  .loginForm button {
+    font-size: 16px;
+  }
+  .createAccountForm input {
+    font-size: 16px;
+  }
+  .createAccountForm button {
+    font-size: 16px;
+  }
 }

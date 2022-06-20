@@ -1,12 +1,12 @@
-import classes from "./ChangeImg.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
 import { changeImg } from "../Store/Actions/UserActions";
+import classes from "./ChangeImg.module.css";
 
 const ChangeImg = () => {
-  const [img, setImg] = useState("");
   const username = useSelector((state) => state.user.username);
+  const [img, setImg] = useState("");
+  const axios = require("axios");
   const dispatch = useDispatch();
 
   const setImgHandler = (event) => {
@@ -23,9 +23,9 @@ const ChangeImg = () => {
             "/profileImg.json",
           { profileImg: img }
         );
-        dispatch(changeImg(img))
+        dispatch(changeImg(img));
         alert("Img updated");
-        setImg("")
+        setImg("");
       } catch (err) {
         console.log(err);
       }
