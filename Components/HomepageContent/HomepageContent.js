@@ -8,10 +8,47 @@ const HomepageContent = () => {
   const following = useSelector((state) => state.user.following);
   const bookmarks = useSelector((state) => state.user.bookmarks);
   const [tweets, setTweets] = useState([]);
+  const [orderedTweets, setOrderedTweets] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const axios = require("axios");
   const dispatch = useDispatch();
 
+  const fetchTweets = async () => {
+    try {
+      for (const user in following) {
+        const response = await axios.get(
+          "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/users/" +
+            following[user] +
+            ".json"
+        );
+        const usernameOfPoster = following[user];
+        const imgOfPoster = response.data.profileImg.profileImg;
+        if (response.data.posts !== undefined) {
+          for (const post in response.data.posts) {
+            const tweetToAdd = {
+              id: post,
+              username: usernameOfPoster,
+              img: imgOfPoster,
+              message: response.data.posts[post].message,
+              time: response.data.posts[post].time,
+            };
+            setTweets((prev) => [...prev, tweetToAdd]);
+          }
+        }
+      }
+      const tweetsByDate = tweets.slice(0);
+      tweetsByDate.sort((a, b) => {
+        return b.time - a.time;
+      });
+      console.log(tweetsByDate)
+      setOrderedTweets(tweetsByDate);
+      setIsLoading(false);
+    } catch (err) { 
+      console.log(err);
+    }
+  };
+
+  /*
   const fetchTweets = async () => {
     try {
       const response = await axios.get(
@@ -43,9 +80,11 @@ const HomepageContent = () => {
       console.log(err);
     }
   };
+  */
 
   useEffect(() => {
     setTweets([]);
+    setOrderedTweets([]);
     fetchTweets();
   }, []);
 
@@ -77,12 +116,15 @@ const HomepageContent = () => {
     }
   };
 
-  const tweetsContent = tweets.map((tweet) => (
+  const tweetsContent = orderedTweets.map((tweet) => (
     <div key={tweet.id} className={classes.tweet}>
       <img src={tweet.img} className={classes.img} />
       <div className={classes.content}>
         <div className={classes.username}>{tweet.username}</div>
-        <div className={classes.message}>{tweet.message}</div>
+        <div className={classes.message}>
+          {tweet.message}
+          {tweet.time}
+        </div>
         <button
           className={classes.bookmark}
           onClick={() => bookmarkHandler(tweet.id)}

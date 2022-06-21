@@ -15,11 +15,10 @@ const Tweet = (props) => {
   const postTweetHandler = async () => {
     if (message.length > 0) {
       const response = await axios.post(
-        "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/posts.json",
+        "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/users/" + username + "/posts.json",
         {
           message: message,
-          username: username,
-          img: profileImg,
+          time: Date.now()
         }
       );
       setMessage("");
@@ -30,6 +29,8 @@ const Tweet = (props) => {
       alert("Your Tweet must contain something!");
     }
   };
+
+
 
   return (
     <div className={classes.tweet}>
