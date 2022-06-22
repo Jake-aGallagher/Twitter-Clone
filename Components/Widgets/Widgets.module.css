@@ -1,0 +1,7 @@
+.widgets{
+    position: fixed;
+    right: 0;
+    height: 100vh;
+    width: 350px;
+    border: 5px solid black;
+}

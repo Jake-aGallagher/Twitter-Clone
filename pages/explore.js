@@ -80,7 +80,7 @@ const Explore = () => {
         "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/users/" +
           username +
           "/following.json",
-        [newFollowingList]
+        [...newFollowingList]
       );
       dispatch(removeFollowing(newFollowingList));
     } catch (err) {

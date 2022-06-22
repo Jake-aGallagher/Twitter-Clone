@@ -15,27 +15,27 @@ const Bookmarks = () => {
     if (bookmarks !== undefined) {
       try {
         const response = await axios.get(
-          "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/posts.json"
+          "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/users.json"
         );
-        for (const obj in response.data) {
-          try {
-            const tweetFound = await axios.get(
-              "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/posts/" +
-                obj +
-                ".json"
-            );
-            if (bookmarks.includes(obj)) {
-              const tweetToAdd = {
-                id: obj,
-                username: tweetFound.data.username,
-                img: tweetFound.data.img,
-                message: tweetFound.data.message,
-              };
-              setBookmarkedTweets((prev) => [...prev, tweetToAdd]);
-            }
-          } catch (err) {
-            console.log(err);
-          }
+        for (const bookmark in bookmarks) {
+          const tweetToAdd = {
+            id: bookmarks[bookmark].id,
+            username: bookmarks[bookmark].username,
+            img: response.data[bookmarks[bookmark].username].profileImg
+              .profileImg,
+            message:
+              response.data[bookmarks[bookmark].username].posts[
+                bookmarks[bookmark].id
+              ].message,
+            time: response.data[bookmarks[bookmark].username].posts[
+              bookmarks[bookmark].id
+            ].time,
+          };
+          setBookmarkedTweets((prev) => {
+            const toOrder = [...prev, tweetToAdd];
+            toOrder.sort((a, b) => b.time - a.time);
+            return toOrder;
+          });
         }
       } catch (err) {
         console.log(err);
@@ -46,14 +46,14 @@ const Bookmarks = () => {
 
   const deleteBookmarkHandler = async (tweetIdentity) => {
     const newBookmarks = bookmarks.filter(
-      (bookmark) => bookmark !== tweetIdentity
+      (bookmark) => bookmark.id !== tweetIdentity.id
     );
     try {
       const response = await axios.put(
         "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/users/" +
           username +
           "/bookmarks.json",
-        newBookmarks
+        [...newBookmarks]
       );
       dispatch(removeBookmark(newBookmarks));
     } catch (err) {
@@ -68,7 +68,9 @@ const Bookmarks = () => {
         <div className={classes.username}>{tweet.username}</div>
         <div className={classes.message}>{tweet.message}</div>
         <button
-          onClick={() => deleteBookmarkHandler(tweet.id)}
+          onClick={() =>
+            deleteBookmarkHandler({ id: tweet.id, username: tweet.username })
+          }
           className={classes.button}
         >
           Remove

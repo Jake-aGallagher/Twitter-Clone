@@ -112,7 +112,6 @@ const Login = (props) => {
   const userDataToCreate = {
     password: { password: createdPassword },
     about: { about: "" },
-    bookmarks: { 0: "" },
     following: { 0: createdUsername },
     profileImg: { profileImg: "https://i.pravatar.cc/60?img=" + rand },
     username: createdUsername,

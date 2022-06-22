@@ -24,12 +24,14 @@ const userAccountReducer = createReducer(initialState, (builder) => {
       state.username = action.payload.username;
       state.profileImg = action.payload.profileImg.profileImg;
       state.following = action.payload.following;
-      state.bookmarks = action.payload.bookmarks;
       state.about = action.payload.about.about;
+      if(action.payload.bookmarks !== undefined) {
+        state.bookmarks = action.payload.bookmarks;
+      }
     })
     .addCase(removeUser, (state) => {
       state.username = "";
-      state.profileImg = "";
+      state.profileImg = ""; 
       state.following = [];
       state.bookmarks = [];
       state.about = "";
@@ -38,6 +40,7 @@ const userAccountReducer = createReducer(initialState, (builder) => {
       state.bookmarks = action.payload;
     })
     .addCase(addExtraBookmark, (state, action) => {
+      console.log(action.payload)
       state.bookmarks = state.bookmarks.concat(action.payload);
     })
     .addCase(removeFollowing, (state, action) => {
