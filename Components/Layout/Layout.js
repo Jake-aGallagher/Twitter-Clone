@@ -2,6 +2,7 @@ import Navbar from "./Navbar.js";
 import classes from "./Layout.module.css";
 
 const Layout = (props) => {
+  /* makes the navbar a component that is present for every page */
   return (
     <div className={classes.layout}>
       <Navbar

@@ -9,6 +9,7 @@ const ChangePassword = () => {
   const [retypedPassword, setRetypedPassword] = useState("");
   const axios = require("axios");
 
+  /* setting the input data for the three input fields */
   const oldHandler = (event) => {
     setOldPassword(event.target.value);
   };
@@ -21,19 +22,22 @@ const ChangePassword = () => {
     setRetypedPassword(event.target.value);
   };
 
+
+  /* clearing all fields when called */
   const clearFormHandler = () => {
     setOldPassword("");
     setNewPassword("");
     setRetypedPassword("");
   };
 
-  const APIcallHandler = async () => {
+  const updatePasswordHandler = async () => {
     try {
       const response = await axios.get(
         "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/users/" +
           username +
           ".json"
       );
+      /* checking if old password is correct */
       if (response.data.password.password === oldPassword) {
         try {
           const res = await axios.put(
@@ -46,12 +50,16 @@ const ChangePassword = () => {
         } catch (err) {
           console.log(err);
         }
-      }
+      } 
+      /* if password is incorrect */
+      clearFormHandler()
+      alert("Incorrect password")
     } catch (err) {
       console.log(err);
     }
   };
 
+  /* logic for checking if new password is valid */
   const submitHandler = (event) => {
     event.preventDefault();
     if (newPassword !== retypedPassword) {
@@ -61,7 +69,7 @@ const ChangePassword = () => {
       clearFormHandler();
       alert("New Password must be at least 8 characters long");
     } else {
-      APIcallHandler();
+      updatePasswordHandler();
     }
   };
 
@@ -70,8 +78,9 @@ const ChangePassword = () => {
       <form className={classes.changePassword}>
         <h2 className={classes.changePasswordTitle}>Change Password</h2>
         <div className={classes.passwordInputs}>
+          {/* old password input */}
           <label htmlFor="oldPassword" className={classes.label}>
-            Old Password:{" "}
+            Old Password:
           </label>
           <input
             type="password"
@@ -81,9 +90,10 @@ const ChangePassword = () => {
             className={classes.inputBox}
           />
         </div>
+        {/* new password input */}
         <div className={classes.passwordInputs}>
           <label htmlFor="newPassword" className={classes.label}>
-            New Password:{" "}
+            New Password:
           </label>
           <input
             type="password"
@@ -94,9 +104,10 @@ const ChangePassword = () => {
             className={classes.inputBox}
           />
         </div>
+        {/* retyped new password input */}
         <div className={classes.passwordInputs}>
           <label htmlFor="retypeNewPassword" className={classes.label}>
-            Retype New Password:{" "}
+            Retype New Password:
           </label>
           <input
             type="password"
@@ -106,6 +117,7 @@ const ChangePassword = () => {
             className={classes.inputBox}
           />
         </div>
+        {/* submit button */}
         <button onClick={submitHandler} className={classes.submitButton}>
           Submit
         </button>

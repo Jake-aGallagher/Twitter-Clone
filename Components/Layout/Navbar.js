@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
+import { removeUser } from "../Store/Actions/UserActions";
 
 import Modals from "./Modals";
 import NavbarOption from "./NavbarOption";
@@ -14,7 +15,6 @@ import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 
 import classes from "./Navbar.module.css";
-import { removeUser } from "../Store/Actions/UserActions";
 
 const Navbar = (props) => {
   const username = useSelector((state) => state.user.username);
@@ -24,18 +24,22 @@ const Navbar = (props) => {
   const router = useRouter();
   const dispatch = useDispatch()
 
+  /* setting a boolean for the window size, to be used to conditionally render text by icons */
+  const showText = props.windowSize >= 1300;
+
+  /* removing user from state and logoutHandler takes you back to the login screen */
   const logoutHandler = () => {
     dispatch(removeUser())
     props.logoutHandler()
   }
 
-  const showText = props.windowSize >= 1300;
-
+  /* passed to <Modal /> so that it can be closed on background click */
   const closeModal = () => {
     setTweetModal(false);
   };
 
   return (
+    /* this is the sidebar, each link gives props to a <NavbarOption /> where it uses the props to show the icons and text */
     <div className={showText ? classes.navbar : classes.smallNav}>
       <TwitterIcon
         className={showText ? classes.twitterIcon : classes.twitterIconSmall}
@@ -102,7 +106,7 @@ const Navbar = (props) => {
           />
         </a>
       </Link>
-
+    {/* this button shows the tweet modal */}
       <button
         onClick={() => setTweetModal(!tweetModal)}
         className={showText ? classes.tweet : classes.tweetSmall}
@@ -112,6 +116,7 @@ const Navbar = (props) => {
 
       {tweetModal && <Modals content="tweet" closeModal={closeModal} />}
 
+      {/* this button shows the logout button */}
       <button
         className={classes.account}
         onClick={() => setShowLogoutBox(!showLogoutBox)}

@@ -9,6 +9,7 @@ const NewChatModal = (props) => {
   const [profiles, setProfiles] = useState([]);
   const axios = require("axios");
 
+  /* sets name of who you are searching for */
   const searchHandler = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -20,6 +21,7 @@ const NewChatModal = (props) => {
       );
       for (const user in response.data) {
         if (
+          /* shows all users other than ones you already have a chat with, yourself and any users that are not in your search term */
           !props.otherUsers.includes(response.data[user].username) &&
           response.data[user].username !== username &&
           response.data[user].username.includes(searchTerm)
@@ -30,6 +32,7 @@ const NewChatModal = (props) => {
             img: response.data[user].profileImg.profileImg,
             about: response.data[user].about.about,
           };
+          /* setting all profiles that you should be shown */
           setProfiles((prev) => [...prev, profileToAdd]);
         }
       }
@@ -38,16 +41,19 @@ const NewChatModal = (props) => {
     }
   };
 
+  /* fetches profiles and re-renders when the search term changes */
   useEffect(() => {
     setProfiles([]);
     fetchResults();
   }, [searchTerm]);
 
+  /* onClick of someone you want to chat with */
   const startChatHandler = async (theirUsername) => {
     try {
       const response = await axios.get(
         "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/chats.json"
       );
+      /* used to set the conversation number in the database */
       const numOfChats = response.data.length;
       try {
         const res = await axios.put(
@@ -59,8 +65,9 @@ const NewChatModal = (props) => {
             messages: [{ message: "Hello", user: username }],
           }
         );
-        props.setShowNewChatModal(false)
-        props.setNewChatRefresh((prev) => prev + 1)
+        /* closes the modal and refreshes your chats section */
+        props.setShowNewChatModal(false);
+        props.setNewChatRefresh((prev) => prev + 1);
       } catch (err) {
         console.log(err);
       }
@@ -69,6 +76,7 @@ const NewChatModal = (props) => {
     }
   };
 
+  /* profiles to render */
   const profilesToShow = profiles.map((profile) => (
     <div key={profile.id} className={classes.profile}>
       <img src={profile.img} className={classes.img} />
@@ -87,12 +95,14 @@ const NewChatModal = (props) => {
 
   return (
     <div className={classes.container}>
+      {/* background click closes modal */}
       <div
         className={classes.background}
         onClick={() => props.setShowNewChatModal(false)}
       ></div>
       <div className={classes.modal}>
         <div className={classes.search}>
+          {/* search bar for starting a chat */}
           <h1 className={classes.title}>Search for Users</h1>
           <input
             type="text"

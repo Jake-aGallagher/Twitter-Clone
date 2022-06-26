@@ -9,20 +9,24 @@ const ChangeImg = () => {
   const axios = require("axios");
   const dispatch = useDispatch();
 
+  /* setting the string for the new img */
   const setImgHandler = (event) => {
     setImg(event.target.value);
   };
 
   const submitHandler = async (event) => {
     event.preventDefault();
+    /* checking if it's an online img as currently no local hosting of images */
     if (/https:\/\/[\S]*/.test(img)) {
       try {
+        /* putting the new img */
         const response = await axios.put(
           "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/users/" +
             username +
             "/profileImg.json",
           { profileImg: img }
         );
+        /* updating the store */
         dispatch(changeImg(img));
         alert("Img updated");
         setImg("");

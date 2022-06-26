@@ -9,6 +9,7 @@ const ChangeAbout = () => {
   const axios = require("axios");
   const dispatch = useDispatch();
 
+  /* sets the string for the new about */
   const setAboutHandler = (event) => {
     setAbout(event.target.value);
   };
@@ -16,13 +17,16 @@ const ChangeAbout = () => {
   const submitHandler = async (event) => {
     event.preventDefault();
     try {
+      /* setting the new about */
       const response = await axios.put(
         "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/users/" +
           username +
           "/about.json",
         { about: about }
       );
+      /* updating the store */
       dispatch(changeAbout(about));
+      /* clearing the input */
       setAbout("");
     } catch (err) {
       console.log(err);

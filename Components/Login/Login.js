@@ -13,16 +13,17 @@ const Login = (props) => {
   const axios = require("axios");
   const dispatch = useDispatch();
 
-  /* Setting the page to either the Login or Create Account page */
+  /* setting the page to Create Account page */
   const signUpPageHandler = () => {
     setSignup(true);
   };
 
+  /* setting the page to the Login page */
   const loginPageHandler = () => {
     setSignup(false);
   };
 
-  /* Getting the data from the Login fields */
+  /* getting the data from the Login fields */
   const usernameHandler = (event) => {
     setUsername(event.target.value);
   };
@@ -34,14 +35,18 @@ const Login = (props) => {
   /* Login */
   const signInHandler = async (event) => {
     event.preventDefault();
+    /* collecting the data based on the username that was input */
     try {
       const response = await axios.get(
         "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/users/" +
           username +
           ".json"
       );
+      /* checking if username matches, plaintext passwords are obviously not ideal but it's what I have to do without a proper back-end */
       if (response.data.password.password === password) {
+        /* if password matches then set the state with the users data */
         dispatch(setUserData(response.data));
+        /* removing the login screen and showing the site */
         props.loginHandler();
       } else {
         setPassword("");
@@ -66,6 +71,7 @@ const Login = (props) => {
     setRetypedPassword(event.target.value);
   };
 
+  /* cleaing filled in fields when submit buttons are clicked */
   const clearCreatedFields = () => {
     setCreatedPassword("");
     setRetypedPassword("");
@@ -89,6 +95,7 @@ const Login = (props) => {
     }
   };
 
+  /* this request hecks for a user with this username already */
   const registerDatabaseCall = async () => {
     try {
       const response = await axios.get(
@@ -96,6 +103,7 @@ const Login = (props) => {
           createdUsername +
           ".json"
       );
+      /* checking that this username doesn't already exist */
       if (response.data === null) {
         createUserAccountPostHandler();
       } else {
@@ -107,8 +115,10 @@ const Login = (props) => {
     }
   };
 
+  /* creating a random num for use with setting an image for a new user */
   const rand = Math.floor(Math.random() * 70 + 1);
 
+  /* this is the object in the format that works with my database */
   const userDataToCreate = {
     password: { password: createdPassword },
     about: { about: "" },
@@ -117,6 +127,7 @@ const Login = (props) => {
     username: createdUsername,
   };
 
+  /* this request creates the account */
   const createUserAccountPostHandler = async () => {
     const response = await axios.put(
       "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/users/" +
@@ -135,6 +146,7 @@ const Login = (props) => {
         <button onClick={signUpPageHandler}>Create Account</button>
         <button onClick={loginPageHandler}>Login</button>
       </div>
+      {/* this is the login screen */}
       {!signup && (
         <form className={classes.loginForm}>
           <label htmlFor="username">Username: </label>
@@ -150,6 +162,7 @@ const Login = (props) => {
         </form>
       )}
 
+      {/* this is the create account screen */}
       {signup && (
         <form className={classes.createAccountForm}>
           <label htmlFor="createUsername">Create Username: </label>

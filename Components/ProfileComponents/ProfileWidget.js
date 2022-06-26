@@ -6,6 +6,7 @@ const ProfileWidget = () => {
   const username = useSelector((state) => state.user.username);
   const profileImg = useSelector((state) => state.user.profileImg);
 
+  /* shows your current info in a widget at the top of the page */
   return (
     <div className={classes.container}>
       <div className={classes.profile}>
