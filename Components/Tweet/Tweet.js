@@ -15,22 +15,25 @@ const Tweet = (props) => {
   const postTweetHandler = async () => {
     if (message.length > 0) {
       const response = await axios.post(
-        "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/users/" + username + "/posts.json",
+        "https://twitterclone-ad8de-default-rtdb.europe-west1.firebasedatabase.app/users/" +
+          username +
+          "/posts.json",
         {
           message: message,
-          time: Date.now()
+          time: Date.now(),
         }
       );
       setMessage("");
       if (props.closeModal !== undefined) {
         props.closeModal();
       }
+      if (props.refreshHomepageHandler !== undefined) {
+        props.refreshHomepageHandler();
+      }
     } else {
       alert("Your Tweet must contain something!");
     }
   };
-
-
 
   return (
     <div className={classes.tweet}>

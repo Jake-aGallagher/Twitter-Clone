@@ -29,6 +29,7 @@ flex-direction: row;
     font-size: 20px;
     border-radius: 10px;
     outline: var(--twitter-color) solid 2px;
+    color: var(--twitter-color);
 }
 
 .buttonFormating{

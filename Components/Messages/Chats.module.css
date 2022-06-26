@@ -1,0 +1,115 @@
+.container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.findChatContainer{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media screen and (min-width: 700px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+  }
+  .findChatContainer{
+    width: 100%;
+    align-self: start;
+  }
+}
+
+
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--twitter-color);
+}
+
+.search label {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.search input {
+  margin-bottom: 20px;
+  width: 100%;
+  height: 40px;
+  border: 2px solid var(--twitter-color);
+  border-radius: 20px;
+  padding-left: 20px;
+  color: var(--twitter-color);
+}
+
+.search input::placeholder {
+  color: var(--twitter-color);
+  font-weight: bold;
+}
+
+.newChatButton{
+  border: 2px solid var(--twitter-color);
+  background-color: var(--twitter-background);
+  color: var(--twitter-color);
+  width: 250px;
+  height: 30px;
+  border-radius: 15px;
+  transition-duration: 0.4s;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.newChatButton:hover{
+  background-color: var(--twitter-color);
+  color: var(--twitter-background);
+}
+
+.chatsToShowContainer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chat {
+  padding: 10px;
+  border: 2px solid var(--twitter-color);
+  border-radius: 10px;
+  width: 90%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.img {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin-right: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  color: var(--twitter-color);
+  font-weight: bold;
+}
+
+.username {
+  font-size: 15px;
+}
+
+.message {
+  font-size: 20px;
+}

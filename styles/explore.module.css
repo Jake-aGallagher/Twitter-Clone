@@ -86,6 +86,7 @@
   transition-duration: 0.4s;
   font-weight: bold;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .button:hover {

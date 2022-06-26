@@ -1,0 +1,122 @@
+.container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.background {
+  position: fixed;
+  background-color: rgba(128, 128, 128, 0.8);
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+}
+
+.modal {
+  width: 75%;
+  max-width: 800px;
+  min-height: 50%;
+  padding: 10px;
+  background-color: rgb(95, 94, 94);
+  border: 2px solid var(--twitter-color);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 3;
+}
+
+.search{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    margin-top: 1vh;
+    color: var(--twitter-color);
+    font-weight: bold;
+    font-size: 30px;
+  }
+  
+  .input {
+    width: 70%;
+    height: 40px;
+    border: 2px solid var(--twitter-color);
+    border-radius: 20px;
+    padding-left: 20px;
+    color: var(--twitter-color);
+  }
+  
+  .input::placeholder {
+    color: var(--twitter-color);
+    font-weight: bold;
+  }
+
+.profileContainer{
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile {
+    padding: 10px;
+    border: 2px solid var(--twitter-color);
+    border-radius: 10px;
+    width: 90%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .img {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    margin-right: 20px;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    color: var(--twitter-color);
+    font-weight: bold;
+  }
+  
+  .username {
+    font-size: 15px;
+  }
+
+  .about {
+    font-size: 20px;
+  }
+
+  .button {
+    border: 2px solid var(--twitter-color);
+    background-color: var(--twitter-background);
+    color: var(--twitter-color);
+    width: 125px;
+    font-size: 15px;
+    height: 30px;
+    border-radius: 15px;
+    transition-duration: 0.4s;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: var(--twitter-color);
+    color: var(--twitter-background);
+  }

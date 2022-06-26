@@ -1,33 +1,34 @@
-.container{
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.background{
-    position: fixed;
-    background-color: rgba(128, 128, 128, 0.8);
-    width: 100vw;
-    height: 100vh;
-    z-index: 2;
+.background {
+  position: fixed;
+  background-color: rgba(128, 128, 128, 0.8);
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
 }
 
-.modal{
-    width: 80%;
-    padding: 10px;
-    background-color: var(--twitter-background);
-    border: 2px solid var(--twitter-color);
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 3;
+.modal {
+  width: 80%;
+  max-width: 800px;
+  padding: 10px;
+  background-color: rgb(95, 94, 94);
+  border: 2px solid var(--twitter-color);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
 }

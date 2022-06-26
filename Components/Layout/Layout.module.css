@@ -2,7 +2,6 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    background-color: rgb(240, 203, 148);
     width: 100vw;
     height: 100vh;
     max-width: 1300px;
