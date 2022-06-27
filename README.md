@@ -11,7 +11,7 @@
 
 
 #### Purpose of this app
-The purpose of this app was to create something that really pushed my to think ahead and plan, having an app this large and complex caused a lot of issues at the start, as deciding to keep the data in a certain way could later on conflict with another operation. this app therfore was all about planning and keeping the code clear a readable, comments were also necessary to keep track of what was happening.
+The purpose of this app was to create something that really pushed my abillity to think ahead and plan, having an app this large and complex caused a lot of issues at the start, as deciding to keep the data in a certain way could later on conflict with another operation. this app therfore was all about planning and keeping the code clear a readable, comments were also necessary to keep track of what was happening.
 
 
 #### What I learned
