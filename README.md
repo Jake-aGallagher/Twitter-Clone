@@ -4,7 +4,7 @@
 
 ### created using Next.js and Firebase realtime Database
 
-#### Other Dependancies:
+#### Other Dependencies:
 * reduxjs/toolkit
 * axios
 * material-ui (for icons only)
